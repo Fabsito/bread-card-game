@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cqlmd04wn32eb"]
+
+[ext_resource type="Script" uid="uid://e7kp3xpqt5s2" path="res://scripts/deck.gd" id="1_slcwo"]
+[ext_resource type="Resource" uid="uid://d3aui058u0jih" path="res://card_data/cards/2_diamond.tres" id="2_c005t"]
+[ext_resource type="Resource" uid="uid://bdxaius3l65hb" path="res://card_data/cards/3_diamond.tres" id="3_w7esf"]
+[ext_resource type="Resource" uid="uid://c40igxa1gne7a" path="res://card_data/cards/4_diamond.tres" id="4_eq2nn"]
+[ext_resource type="Resource" uid="uid://hdty04kkdhsw" path="res://card_data/cards/5_diamond.tres" id="5_hn3gr"]
+[ext_resource type="Resource" uid="uid://c2xjmp1nccog" path="res://card_data/cards/6_diamond.tres" id="6_q5g27"]
+[ext_resource type="Resource" uid="uid://bbc8yc1xeqe3o" path="res://card_data/cards/7_diamond.tres" id="7_d3noc"]
+[ext_resource type="Resource" uid="uid://0c1e13jqes6c" path="res://card_data/cards/8_diamond.tres" id="8_5dgo8"]
+[ext_resource type="Resource" uid="uid://dccyv33wde4j4" path="res://card_data/cards/9_diamond.tres" id="9_age4p"]
+[ext_resource type="Resource" uid="uid://bgunhuyp2qwoj" path="res://card_data/cards/10_diamond.tres" id="10_36qco"]
+[ext_resource type="Resource" uid="uid://0ftmpp0seaw8" path="res://card_data/cards/a_diamond.tres" id="11_7t2rj"]
+[ext_resource type="Resource" uid="uid://b1ukaq5fox8he" path="res://card_data/cards/j_diamond.tres" id="12_56jfk"]
+[ext_resource type="Resource" uid="uid://dtitudhqcs6rw" path="res://card_data/cards/k_diamond.tres" id="13_yqw3q"]
+[ext_resource type="Resource" uid="uid://cpxdhiv7xyto6" path="res://card_data/cards/q_diamond.tres" id="14_np1no"]
+[ext_resource type="Texture2D" uid="uid://cpjgdgjq2u1un" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Card Back 3.png" id="15_wq5of"]
+
+[node name="Deck" type="Node2D" unique_id=640465779]
+script = ExtResource("1_slcwo")
+cards = Array[Resource]([ExtResource("2_c005t"), ExtResource("3_w7esf"), ExtResource("4_eq2nn"), ExtResource("5_hn3gr"), ExtResource("6_q5g27"), ExtResource("7_d3noc"), ExtResource("8_5dgo8"), ExtResource("9_age4p"), ExtResource("10_36qco"), ExtResource("11_7t2rj"), ExtResource("12_56jfk"), ExtResource("13_yqw3q"), ExtResource("14_np1no")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1098435423]
+texture = ExtResource("15_wq5of")

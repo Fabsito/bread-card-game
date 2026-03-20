@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://bgunhuyp2qwoj"]
+
+[ext_resource type="Texture2D" uid="uid://bga88jq8oao5b" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Diamonds 10.png" id="1_6qts5"]
+[ext_resource type="Script" uid="uid://bshmgawat2sht" path="res://card_data/card_data.gd" id="2_4fff8"]
+
+[resource]
+script = ExtResource("2_4fff8")
+value = 10
+suit = "Diamond"
+card_texture = ExtResource("1_6qts5")

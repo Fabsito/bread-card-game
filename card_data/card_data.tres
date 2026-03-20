@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://ddq58v51rd2nx"]
+
+[ext_resource type="Texture2D" uid="uid://d3wr1kfuv45oq" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Empty 1.png" id="1_aqwgf"]
+[ext_resource type="Script" uid="uid://bshmgawat2sht" path="res://card_data/card_data.gd" id="2_awg7h"]
+
+[resource]
+script = ExtResource("2_awg7h")
+card_texture = ExtResource("1_aqwgf")

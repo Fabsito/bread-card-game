@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bcj3sihlwt0oh"]
+
+[ext_resource type="Script" uid="uid://cohswaqn11ekl" path="res://scripts/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cqlmd04wn32eb" path="res://Scenes/deck.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dljlltctp61hb" path="res://Scenes/card.tscn" id="1_jjvhh"]
+
+[node name="Main" type="Node2D" unique_id=179773420]
+script = ExtResource("1_8gbba")
+
+[node name="Deck" parent="." unique_id=640465779 node_paths=PackedStringArray("hand") instance=ExtResource("1_bo1nx")]
+position = Vector2(91, 319)
+cardScene = ExtResource("1_jjvhh")
+hand = NodePath("../Hand")
+
+[node name="Hand" type="Node2D" parent="." unique_id=1373479371]
+position = Vector2(558, 570)
+
+[node name="Button" type="Button" parent="." unique_id=675281509]
+offset_left = 68.0
+offset_top = 354.0
+offset_right = 117.0
+offset_bottom = 385.0
+text = "Draw"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
