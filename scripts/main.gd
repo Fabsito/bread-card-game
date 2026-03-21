@@ -1,7 +1,6 @@
 extends Node2D
 @onready var back_ground: ColorRect = $back_ground
-
-@onready var deck: Node2D = $Deck
+@onready var deck: Node2D = $GUI/Deck
 @onready var menu_buttons: VBoxContainer = $"menu buttons"
 var menu_buttons_visible : bool = false
 var menu_active : bool = false
@@ -23,13 +22,14 @@ func _on_button_pressed() -> void:
 	deck.draw_card()
 
 func _on_save_pressed() -> void:
-	pass # Replace with function body.
+	pass #TODO save 
 
 func _on_load_pressed() -> void:
-	pass # Replace with function body.
+	pass #TODO load 
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_options_pressed() -> void:
-	pass # Replace with function body.
+	menu_buttons.visible = false
+	#TODO  options menu

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dljlltctp61hb" path="res://Scenes/card.tscn" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://glki1fglj8ct" path="res://scripts/hand.gd" id="4_kry3j"]
+[ext_resource type="PackedScene" uid="uid://dhigxovfyt30k" path="res://Scenes/enemy.tscn" id="7_6bp64"]
 [ext_resource type="PackedScene" uid="uid://ivvdflrmopim" path="res://player/player.tscn" id="8_ynf5e"]
 
 [node name="Main" type="Node2D" unique_id=179773420]
@@ -47,32 +48,31 @@ text = "Quit game"
 [node name="GUI" type="Node2D" parent="." unique_id=92852933]
 
 [node name="Deck" parent="GUI" unique_id=640465779 node_paths=PackedStringArray("hand") instance=ExtResource("1_bo1nx")]
-position = Vector2(46, 175)
+position = Vector2(44, 263)
 cardScene = ExtResource("1_jjvhh")
 hand = NodePath("../Hand")
-
-[node name="discard" parent="GUI/Deck" index="2" unique_id=1555147465]
-visible = false
 
 [node name="Hand" type="Node2D" parent="GUI" unique_id=1373479371]
 position = Vector2(331, 331)
 script = ExtResource("4_kry3j")
 
-[node name="Player" parent="." unique_id=936525111 instance=ExtResource("8_ynf5e")]
+[node name="2d-plataformer" type="Node2D" parent="." unique_id=253534479]
 visible = false
+
+[node name="Player" parent="2d-plataformer" unique_id=936525111 instance=ExtResource("8_ynf5e")]
 position = Vector2(319, 179)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1472970440]
-visible = false
+[node name="StaticBody2D" type="StaticBody2D" parent="2d-plataformer" unique_id=1472970440]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=441772397]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2d-plataformer/StaticBody2D" unique_id=441772397]
 position = Vector2(29.000002, 166)
 scale = Vector2(5.1620207, 1)
 polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
+
+[node name="enemy" parent="." unique_id=1347720982 instance=ExtResource("7_6bp64")]
+position = Vector2(513, 122)
 
 [connection signal="pressed" from="menu buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu buttons/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="menu buttons/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="menu buttons/Quit" to="." method="_on_quit_pressed"]
-
-[editable path="GUI/Deck"]

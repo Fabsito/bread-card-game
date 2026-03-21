@@ -1,11 +1,6 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://d4ehffr1e5b61"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dafpw1fv5ac1d"]
 
-[ext_resource type="Shader" uid="uid://bofoxs6jrlo6q" path="res://shaders/3D-perspective/3d-perspective.gdshader" id="1_br434"]
+[ext_resource type="Shader" uid="uid://c1ea2872fots6" path="res://shaders/3D-perspective/3D-perspective.gdshader" id="1_r4hmv"]
 
 [resource]
-shader = ExtResource("1_br434")
-shader_parameter/fov = 90.0
-shader_parameter/cull_back = true
-shader_parameter/y_rot = 0.0
-shader_parameter/x_rot = 0.0
-shader_parameter/inset = 0.0
+shader = ExtResource("1_r4hmv")
