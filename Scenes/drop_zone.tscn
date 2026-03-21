@@ -1,21 +1,39 @@
 [gd_scene format=3 uid="uid://caeroqqiq4qnt"]
 
 [ext_resource type="Script" uid="uid://kdq4ihi5rgcc" path="res://scripts/drop_zone.gd" id="1_shdp8"]
-[ext_resource type="Texture2D" uid="uid://dn8tscgjyipg" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Card Back 2.png" id="1_tcq6s"]
+[ext_resource type="Texture2D" uid="uid://da7m3usoecs5d" path="res://assets/pixel_art/drop_zone.png" id="2_shdp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shdp8"]
 size = Vector2(40, 66)
 
 [node name="Drop zone" type="Area2D" unique_id=60187481 groups=["drop_zone"]]
+modulate = Color(0.6632293, 0.40801865, 0.7612807, 1)
 script = ExtResource("1_shdp8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1855552403]
-texture = ExtResource("1_tcq6s")
+modulate = Color(0.6227614, 0.85424274, 0.7815108, 1)
+self_modulate = Color(0.6282277, 0.3168681, 0.45756024, 1)
+position = Vector2(8.12, 0)
+texture = ExtResource("2_shdp8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296594978]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=296594978]
+position = Vector2(64, 0)
 shape = SubResource("RectangleShape2D_shdp8")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1951511801]
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="." unique_id=1509829089]
+shape = SubResource("RectangleShape2D_shdp8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=539635745]
+position = Vector2(-64, 0)
+shape = SubResource("RectangleShape2D_shdp8")
+
+[node name="Marker2D1" type="Marker2D" parent="." unique_id=1951511801]
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=189127847]
+position = Vector2(64, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=1624003523]
+position = Vector2(-64, 0)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -22,3 +22,12 @@ cards = Array[Resource]([ExtResource("2_c005t"), ExtResource("3_w7esf"), ExtReso
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1098435423]
 texture = ExtResource("15_wq5of")
+
+[node name="Button" type="Button" parent="." unique_id=2116280242]
+offset_left = -26.0
+offset_top = 34.0
+offset_right = 28.0
+offset_bottom = 65.0
+text = "Draw!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://dljlltctp61hb"]
 
-[ext_resource type="Texture2D" uid="uid://d3wr1kfuv45oq" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Empty 1.png" id="1_brehn"]
+[ext_resource type="Texture2D" uid="uid://d3wr1kfuv45oq" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Empty 1.png" id="1_eumee"]
 [ext_resource type="Script" uid="uid://djo263yhvwvg8" path="res://scripts/card.gd" id="2_eumee"]
 [ext_resource type="Script" uid="uid://p1p0s2s7fe56" path="res://scripts/card_click.gd" id="3_e6po8"]
+[ext_resource type="PackedScene" uid="uid://byemoi1fjdp0k" path="res://shaders/3D-perspective/3d-perspective.tscn" id="4_e6po8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnspj"]
 size = Vector2(40, 66)
 
 [node name="card" type="Sprite2D" unique_id=1918723890]
-texture = ExtResource("1_brehn")
+texture = ExtResource("1_eumee")
 script = ExtResource("2_eumee")
-card_texture = ExtResource("1_brehn")
+card_texture = ExtResource("1_eumee")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1754829217]
 script = ExtResource("3_e6po8")
@@ -18,5 +19,14 @@ script = ExtResource("3_e6po8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=978282476]
 shape = SubResource("RectangleShape2D_bnspj")
 
+[node name="TextureRect" parent="." unique_id=1805415691 instance=ExtResource("4_e6po8")]
+offset_left = -20.0
+offset_top = -33.0
+offset_right = 20.0
+offset_bottom = 7.0
+scale = Vector2(1.0091883, 1.659762)
+
 [connection signal="card_action" from="Area2D" to="." method="_on_area_2d_card_action"]
 [connection signal="card_release" from="Area2D" to="." method="_on_area_2d_card_release"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

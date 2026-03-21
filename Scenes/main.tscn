@@ -3,44 +3,40 @@
 [ext_resource type="Script" uid="uid://cohswaqn11ekl" path="res://scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cqlmd04wn32eb" path="res://Scenes/deck.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dljlltctp61hb" path="res://Scenes/card.tscn" id="1_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_21xkr"]
 [ext_resource type="PackedScene" uid="uid://caeroqqiq4qnt" path="res://Scenes/drop_zone.tscn" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://glki1fglj8ct" path="res://scripts/hand.gd" id="4_kry3j"]
+[ext_resource type="Material" uid="uid://d4ehffr1e5b61" path="res://shaders/3D-perspective/3d-perspective.tres" id="8_344ge"]
 
 [node name="Main" type="Node2D" unique_id=179773420]
 script = ExtResource("1_8gbba")
 
+[node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_21xkr")]
+offset_bottom = 358.0
+mouse_filter = 1
+
 [node name="Deck" parent="." unique_id=640465779 node_paths=PackedStringArray("hand") instance=ExtResource("1_bo1nx")]
-position = Vector2(27, 91)
+position = Vector2(58, 117)
 cardScene = ExtResource("1_jjvhh")
 hand = NodePath("../Hand")
 
-[node name="Button" type="Button" parent="Deck" unique_id=675281509]
-offset_left = -23.0
-offset_top = 36.0
-offset_right = 26.0
-offset_bottom = 67.0
-text = "Draw"
-
 [node name="Hand" type="Node2D" parent="." unique_id=1373479371]
-position = Vector2(234, 216)
+position = Vector2(331, 331)
 script = ExtResource("4_kry3j")
 
 [node name="Drop zone" parent="." unique_id=60187481 instance=ExtResource("4_jjvhh")]
-position = Vector2(236, 90)
+position = Vector2(349, 160)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1042739608]
+[node name="menu buttons" type="VBoxContainer" parent="." unique_id=1042739608]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Quit" type="Button" parent="VBoxContainer" unique_id=303887909]
+[node name="Quit" type="Button" parent="menu buttons" unique_id=303887909]
 layout_mode = 2
 text = "Quit game"
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=781222477]
-layout_mode = 2
+[node name="card" parent="." unique_id=1918723890 instance=ExtResource("1_jjvhh")]
+material = ExtResource("8_344ge")
+position = Vector2(60, 287)
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=225339915]
-layout_mode = 2
-
-[connection signal="pressed" from="Deck/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="menu buttons/Quit" to="." method="_on_quit_pressed"]

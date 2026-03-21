@@ -15,3 +15,7 @@ func draw_card() -> void:
 	card.global_position = hand.global_position
 	hand.add_child(card)
 	print(card.name)
+
+
+func _on_button_pressed() -> void:
+	draw_card()

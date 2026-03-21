@@ -9,7 +9,6 @@ var is_on_drop_zone : bool = false
 var current_slot = null
 
 var hold :bool = false
-
 func _ready() -> void:
 	texture = card_texture
 
@@ -58,13 +57,6 @@ func _on_area_2d_card_release(left: bool) -> void:
 func back_to_deck():
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", original_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-func set_on_drop_zone(value: bool) -> void:
-	is_on_drop_zone = value
-	if is_on_drop_zone:
-		modulate = Color(1.2, 1.2, 1.2) # Brilla un poco
-	else:
-		modulate = Color(1, 1, 1) # Vuelve al color normal
 
 func animate_to_pos(target_pos: Vector2):
 	var tween = create_tween()
