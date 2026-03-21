@@ -4,39 +4,75 @@
 [ext_resource type="PackedScene" uid="uid://cqlmd04wn32eb" path="res://Scenes/deck.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://dljlltctp61hb" path="res://Scenes/card.tscn" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_21xkr"]
-[ext_resource type="PackedScene" uid="uid://caeroqqiq4qnt" path="res://Scenes/drop_zone.tscn" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://glki1fglj8ct" path="res://scripts/hand.gd" id="4_kry3j"]
-[ext_resource type="Material" uid="uid://d4ehffr1e5b61" path="res://shaders/3D-perspective/3d-perspective.tres" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://ivvdflrmopim" path="res://player/player.tscn" id="8_ynf5e"]
 
 [node name="Main" type="Node2D" unique_id=179773420]
 script = ExtResource("1_8gbba")
 
 [node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_21xkr")]
-offset_bottom = 358.0
-mouse_filter = 1
-
-[node name="Deck" parent="." unique_id=640465779 node_paths=PackedStringArray("hand") instance=ExtResource("1_bo1nx")]
-position = Vector2(58, 117)
-cardScene = ExtResource("1_jjvhh")
-hand = NodePath("../Hand")
-
-[node name="Hand" type="Node2D" parent="." unique_id=1373479371]
-position = Vector2(331, 331)
-script = ExtResource("4_kry3j")
-
-[node name="Drop zone" parent="." unique_id=60187481 instance=ExtResource("4_jjvhh")]
-position = Vector2(349, 160)
+offset_top = 1.0
+offset_bottom = 361.0
 
 [node name="menu buttons" type="VBoxContainer" parent="." unique_id=1042739608]
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 546.0
+offset_top = 5.0
+offset_right = 635.0
+offset_bottom = 141.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+
+[node name="Options" type="Button" parent="menu buttons" unique_id=2063762194]
+layout_mode = 2
+text = "Options"
+
+[node name="Save" type="Button" parent="menu buttons" unique_id=1788586496]
+layout_mode = 2
+text = "Save
+"
+
+[node name="Load" type="Button" parent="menu buttons" unique_id=1714753510]
+layout_mode = 2
+text = "Load
+"
 
 [node name="Quit" type="Button" parent="menu buttons" unique_id=303887909]
 layout_mode = 2
 text = "Quit game"
 
-[node name="card" parent="." unique_id=1918723890 instance=ExtResource("1_jjvhh")]
-material = ExtResource("8_344ge")
-position = Vector2(60, 287)
+[node name="GUI" type="Node2D" parent="." unique_id=92852933]
 
+[node name="Deck" parent="GUI" unique_id=640465779 node_paths=PackedStringArray("hand") instance=ExtResource("1_bo1nx")]
+position = Vector2(46, 175)
+cardScene = ExtResource("1_jjvhh")
+hand = NodePath("../Hand")
+
+[node name="discard" parent="GUI/Deck" index="2" unique_id=1555147465]
+visible = false
+
+[node name="Hand" type="Node2D" parent="GUI" unique_id=1373479371]
+position = Vector2(331, 331)
+script = ExtResource("4_kry3j")
+
+[node name="Player" parent="." unique_id=936525111 instance=ExtResource("8_ynf5e")]
+visible = false
+position = Vector2(319, 179)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1472970440]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=441772397]
+position = Vector2(29.000002, 166)
+scale = Vector2(5.1620207, 1)
+polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
+
+[connection signal="pressed" from="menu buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="menu buttons/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="menu buttons/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="menu buttons/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="GUI/Deck"]

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cjrgflwftoy76"]
+
+[ext_resource type="Script" uid="uid://dllarotfp86lo" path="res://scripts/debug_menu.gd" id="1_842g3"]
+
+[node name="Control" type="CanvasLayer" unique_id=61254434]
+script = ExtResource("1_842g3")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2074942189]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1186743613]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=949840640]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer" unique_id=96917406]
+layout_mode = 2

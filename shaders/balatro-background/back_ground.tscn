@@ -4,17 +4,17 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4y2"]
 shader = ExtResource("1_fggaj")
-shader_parameter/spin_rotation_speed = 2.0
-shader_parameter/move_speed = 7.0
+shader_parameter/spin_rotation_speed = 0.67
+shader_parameter/move_speed = 3.55
 shader_parameter/offset = Vector2(0, 0)
-shader_parameter/colour_1 = Color(0.5389177, 0.17874926, 0.4780985, 1)
-shader_parameter/colour_2 = Color(0.83867687, 0.1331377, 0.21618208, 1)
-shader_parameter/colour_3 = Color(0.049630724, 0.09924587, 0.20301756, 1)
-shader_parameter/contrast = 3.5
-shader_parameter/lighting = 0.4
-shader_parameter/spin_amount = 0.25
+shader_parameter/colour_1 = Color(0.17254902, 0.3137255, 0.8039216, 1)
+shader_parameter/colour_2 = Color(0.7065336, 0.33655128, 0.25421375, 1)
+shader_parameter/colour_3 = Color(0.20606971, 0.16435835, 0.051222086, 1)
+shader_parameter/contrast = 2.78
+shader_parameter/lighting = 0.345
+shader_parameter/spin_amount = 0.345
 shader_parameter/pixel_filter = 740.0
-shader_parameter/is_rotating = false
+shader_parameter/is_rotating = true
 
 [sub_resource type="Theme" id="Theme_yt4s2"]
 

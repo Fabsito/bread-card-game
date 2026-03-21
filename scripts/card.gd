@@ -7,6 +7,10 @@ static var card_being_held = null
 var original_position : Vector2
 var is_on_drop_zone : bool = false
 var current_slot = null
+var is_hovering : bool = false
+
+signal request_reorder(card, global_pos)
+var target_index = -1
 
 var hold :bool = false
 func _ready() -> void:
@@ -14,7 +18,19 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if hold:
-		global_position = get_global_mouse_position()
+		global_position = global_position.lerp(get_global_mouse_position(), 0.25)
+		request_reorder.emit(self, global_position)
+	if is_hovering: 
+		_on_card_hover(self)
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and get_rect().has_point(to_local(event.global_position)):
+			hold = true
+			z_index = 100 # Al frente mientras se arrastra
+		else:
+			hold = false
+			z_index = 0
 
 func _on_area_2d_card_action(left: bool) -> void:
 	if left:
@@ -61,3 +77,26 @@ func back_to_deck():
 func animate_to_pos(target_pos: Vector2):
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", target_pos, 0.15).set_trans(Tween.TRANS_SINE)
+
+func setup_hover_events(card_node: Node2D):
+	# Asumiendo que la carta tiene un Area2D o es un Control
+	self.mouse_entered.connect(_on_card_hover.bind(card_node, true))
+	self.mouse_exited.connect(_on_card_hover.bind(card_node, false))
+
+func _on_card_hover(card: Node2D,) -> void:
+	var tween = create_tween().set_parallel(true)
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+	if is_hovering:
+		# Escala más grande y sube un poco (eje Y negativo es arriba)
+		tween.tween_property(card, "scale", Vector2(1.6, 1.6), 0.2)
+		# Usamos un offset relativo para que no pierda su posición en el abanico
+		card.z_index = 100 # Se pone al frente de las demás
+		print("¡Ratón detectado sobre la carta!")
+	else:
+		# Vuelve a su tamaño normal
+		tween.tween_property(card, "scale", Vector2(0.6, 0.6), 0.2)
+		card.z_index = 0
+
+func _on_h_slider_changed() -> void:
+	pass

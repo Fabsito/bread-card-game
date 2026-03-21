@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bgtr5g6ah1glg"]
+
+[ext_resource type="Shader" uid="uid://viuhmrnrrrf1" path="res://shaders/balatro-fire/balatro-fire.gdshader" id="1_pbql6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pbql6"]
+frequency = 0.014
+offset = Vector3(-14.4, 652.17, 0)
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ucca"]
+width = 200
+height = 200
+noise = SubResource("FastNoiseLite_pbql6")
+seamless = true
+seamless_blend_skirt = 0.14
+
+[resource]
+shader = ExtResource("1_pbql6")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_8ucca")
+shader_parameter/bottom_color = Color(0, 0.7, 1, 1)
+shader_parameter/middle_color = Color(1, 0.5, 0, 1)
+shader_parameter/top_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 0.5600000266
+shader_parameter/fire_speed = Vector2(0.2, 0.67)
+shader_parameter/fire_aperture = 0.9430000447925
