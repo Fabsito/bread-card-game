@@ -78,12 +78,12 @@ script = ExtResource("4_kry3j")
 position = Vector2(307, 71)
 
 [node name="2d-plataformer" type="Node2D" parent="." unique_id=253534479]
-visible = false
 
 [node name="Player" parent="2d-plataformer" unique_id=936525111 instance=ExtResource("8_ynf5e")]
 position = Vector2(319, 179)
 
 [node name="enemy" parent="2d-plataformer" unique_id=1906173150 instance=ExtResource("9_ynf5e")]
+visible = false
 position = Vector2(622, 344)
 
 [node name="walls" type="StaticBody2D" parent="2d-plataformer" unique_id=1472970440]

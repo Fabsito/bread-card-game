@@ -17,7 +17,7 @@ func sort_hand():
 	# 1. Lógica de Reordenamiento (Drag & Drop)
 	var dragging_card = null
 	for c in cards:
-		if c.hold: dragging_card = c
+		if "hold": dragging_card = c
 	
 	if dragging_card:
 		_handle_reordering(dragging_card, cards)
@@ -27,7 +27,7 @@ func sort_hand():
 	
 	for i in range(total_cards):
 		var card = cards[i]
-		if card.hold: continue
+		if "hold": continue
 		
 		var target_x = start_x + (i * spacing)
 		

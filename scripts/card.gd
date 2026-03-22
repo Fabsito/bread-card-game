@@ -8,11 +8,10 @@ var original_position : Vector2
 var is_on_drop_zone : bool = false
 var current_slot = null
 var is_hovering : bool = false
-
+var hold: bool = false # Define la variable para que sort_hand pueda leerla
 signal request_reorder(card, global_pos)
 var target_index = -1
 
-var hold :bool = false
 func _ready() -> void:
 	texture = card_texture
 
