@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://d3wr1kfuv45oq" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Empty 1.png" id="1_eumee"]
 [ext_resource type="Script" uid="uid://djo263yhvwvg8" path="res://scripts/card.gd" id="2_eumee"]
 [ext_resource type="Script" uid="uid://p1p0s2s7fe56" path="res://scripts/card_click.gd" id="3_e6po8"]
-[ext_resource type="PackedScene" uid="uid://byemoi1fjdp0k" path="res://shaders/3D-perspective/3d-perspective.tscn" id="4_e6po8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnspj"]
 size = Vector2(40, 66)
@@ -18,13 +17,6 @@ script = ExtResource("3_e6po8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=978282476]
 shape = SubResource("RectangleShape2D_bnspj")
-
-[node name="TextureRect" parent="." unique_id=1805415691 instance=ExtResource("4_e6po8")]
-offset_left = -20.0
-offset_top = -33.0
-offset_right = 20.0
-offset_bottom = 7.0
-scale = Vector2(1.0091883, 1.659762)
 
 [connection signal="card_action" from="Area2D" to="." method="_on_area_2d_card_action"]
 [connection signal="card_release" from="Area2D" to="." method="_on_area_2d_card_release"]

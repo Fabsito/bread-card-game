@@ -98,5 +98,21 @@ func _on_card_hover(card: Node2D,) -> void:
 		tween.tween_property(card, "scale", Vector2(0.6, 0.6), 0.2)
 		card.z_index = 0
 
+func set_on_drop_zone(area):
+	var drop_zone = get_tree().get_first_node_in_group("drop_zone")
+	is_on_drop_zone=true
+	if is_on_drop_zone and drop_zone != null:
+			var slot = drop_zone.get_closest_slot(global_position)
+			
+			if slot:
+				if get_parent() != drop_zone:
+					get_parent().remove_child(self)
+					drop_zone.add_child(self)
+				
+				drop_zone.release_slot(self)
+				slot.occupied = true
+				slot.card = self
+				current_slot = slot
+				animate_to_pos(slot.pos) 
 func _on_h_slider_changed() -> void:
 	pass

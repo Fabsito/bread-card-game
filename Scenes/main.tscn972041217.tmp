@@ -6,9 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://glki1fglj8ct" path="res://scripts/hand.gd" id="4_kry3j"]
 [ext_resource type="PackedScene" uid="uid://caeroqqiq4qnt" path="res://Scenes/drop_zone.tscn" id="6_344ge"]
-[ext_resource type="Material" uid="uid://bgtr5g6ah1glg" path="res://shaders/balatro-fire/balatro-fire.tres" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://ivvdflrmopim" path="res://player/player.tscn" id="8_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://dhigxovfyt30k" path="res://Scenes/enemy.tscn" id="9_ynf5e"]
 
 [node name="Main" type="Node2D" unique_id=179773420]
 script = ExtResource("1_8gbba")
@@ -28,10 +26,6 @@ offset_right = 635.0
 offset_bottom = 141.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-
-[node name="Resume" type="Button" parent="menu buttons" unique_id=1314057704]
-layout_mode = 2
-text = "Resume"
 
 [node name="Options" type="Button" parent="menu buttons" unique_id=2063762194]
 layout_mode = 2
@@ -65,17 +59,13 @@ script = ExtResource("4_kry3j")
 [node name="Sprite2D" type="Sprite2D" parent="GUI" unique_id=747170173]
 
 [node name="Drop zone" parent="GUI" unique_id=60187481 instance=ExtResource("6_344ge")]
-material = ExtResource("7_344ge")
-use_parent_material = true
-position = Vector2(317, 85)
+position = Vector2(304, 90)
 
 [node name="2d-plataformer" type="Node2D" parent="." unique_id=253534479]
+visible = false
 
 [node name="Player" parent="2d-plataformer" unique_id=936525111 instance=ExtResource("8_ynf5e")]
 position = Vector2(319, 179)
-
-[node name="enemy" parent="2d-plataformer" unique_id=1906173150 instance=ExtResource("9_ynf5e")]
-position = Vector2(381, 171)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="2d-plataformer" unique_id=1472970440]
 
@@ -84,7 +74,6 @@ position = Vector2(29.000002, 166)
 scale = Vector2(5.1620207, 1)
 polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
 
-[connection signal="pressed" from="menu buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="menu buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="menu buttons/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="menu buttons/Load" to="." method="_on_load_pressed"]

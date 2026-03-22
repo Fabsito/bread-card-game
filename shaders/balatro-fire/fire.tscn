@@ -5,7 +5,6 @@
 
 [node name="Fire" type="TextureRect" unique_id=278138566]
 material = ExtResource("1_85wgq")
-use_parent_material = true
 custom_minimum_size = Vector2(64, 64)
 offset_right = 128.0
 offset_bottom = 128.0

@@ -10,11 +10,13 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	var card = area.get_parent()
+	print("card on area2d",card)
 	if card.has_method("set_on_drop_zone"):
 		card.set_on_drop_zone(true)
 
 func _on_area_exited(area: Area2D) -> void:
 	var card = area.get_parent()
+	print("card exited area2d")
 	if card.has_method("set_on_drop_zone"):
 		card.set_on_drop_zone(false)
 
