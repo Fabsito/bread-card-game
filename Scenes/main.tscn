@@ -5,17 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://dljlltctp61hb" path="res://Scenes/card.tscn" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_21xkr"]
 [ext_resource type="Script" uid="uid://glki1fglj8ct" path="res://scripts/hand.gd" id="4_kry3j"]
-[ext_resource type="PackedScene" uid="uid://caeroqqiq4qnt" path="res://Scenes/drop_zone.tscn" id="6_344ge"]
-[ext_resource type="Material" uid="uid://bgtr5g6ah1glg" path="res://shaders/balatro-fire/balatro-fire.tres" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://ivvdflrmopim" path="res://player/player.tscn" id="8_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://dhigxovfyt30k" path="res://Scenes/enemy.tscn" id="9_ynf5e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bp64"]
+radius = 334.0
+height = 1250.0
 
 [node name="Main" type="Node2D" unique_id=179773420]
 script = ExtResource("1_8gbba")
 
 [node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_21xkr")]
-offset_top = 1.0
-offset_bottom = 361.0
 
 [node name="menu buttons" type="VBoxContainer" parent="." unique_id=1042739608]
 visible = false
@@ -53,35 +53,67 @@ text = "Quit game"
 
 [node name="GUI" type="Node2D" parent="." unique_id=92852933]
 
-[node name="Deck" parent="GUI" unique_id=640465779 node_paths=PackedStringArray("hand") instance=ExtResource("1_bo1nx")]
-position = Vector2(46, 47)
+[node name="Deck" parent="GUI" unique_id=640465779 instance=ExtResource("1_bo1nx")]
+position = Vector2(73, 196)
 cardScene = ExtResource("1_jjvhh")
-hand = NodePath("../Hand")
 
-[node name="Hand" type="Node2D" parent="GUI" unique_id=1373479371]
-position = Vector2(331, 331)
+[node name="Player_Hand" type="Node2D" parent="GUI" unique_id=1373479371]
+position = Vector2(307, 330)
+script = ExtResource("4_kry3j")
+
+[node name="Area2D" type="Area2D" parent="GUI/Player_Hand" unique_id=1463177105]
+position = Vector2(12, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GUI/Player_Hand/Area2D" unique_id=1626151895]
+position = Vector2(-12, 550)
+shape = SubResource("CapsuleShape2D_6bp64")
+
+[node name="Enemy_Hand" type="Node2D" parent="GUI" unique_id=763142508]
+position = Vector2(307, 76)
 script = ExtResource("4_kry3j")
 
 [node name="Sprite2D" type="Sprite2D" parent="GUI" unique_id=747170173]
 
-[node name="Drop zone" parent="GUI" unique_id=60187481 instance=ExtResource("6_344ge")]
-material = ExtResource("7_344ge")
-use_parent_material = true
-position = Vector2(317, 85)
+[node name="card" parent="GUI" unique_id=1918723890 instance=ExtResource("1_jjvhh")]
+position = Vector2(307, 71)
 
 [node name="2d-plataformer" type="Node2D" parent="." unique_id=253534479]
+visible = false
 
 [node name="Player" parent="2d-plataformer" unique_id=936525111 instance=ExtResource("8_ynf5e")]
 position = Vector2(319, 179)
 
 [node name="enemy" parent="2d-plataformer" unique_id=1906173150 instance=ExtResource("9_ynf5e")]
-position = Vector2(381, 171)
+position = Vector2(622, 344)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="2d-plataformer" unique_id=1472970440]
+[node name="walls" type="StaticBody2D" parent="2d-plataformer" unique_id=1472970440]
+visible = false
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2d-plataformer/StaticBody2D" unique_id=441772397]
-position = Vector2(29.000002, 166)
-scale = Vector2(5.1620207, 1)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="2d-plataformer/walls" unique_id=441772397]
+position = Vector2(-104, 340)
+scale = Vector2(7.8384514, 1)
+polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="2d-plataformer/walls" unique_id=1861334389]
+position = Vector2(-122.99999, -90)
+scale = Vector2(7.8384514, 1)
+polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="2d-plataformer/walls" unique_id=2047819133]
+position = Vector2(-96, 473)
+rotation = -1.5707964
+scale = Vector2(7.2119575, 1)
+polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="2d-plataformer/walls" unique_id=797894637]
+position = Vector2(623, 497.00003)
+rotation = -1.5707964
+scale = Vector2(7.2119575, 1)
+polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="2d-plataformer/walls" unique_id=1896666804]
+position = Vector2(150.49873, 173)
+scale = Vector2(3.008625, 0.30342364)
 polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 95.02)
 
 [connection signal="pressed" from="menu buttons/Resume" to="." method="_on_resume_pressed"]
@@ -89,3 +121,5 @@ polygon = PackedVector2Array(98.405, 96.905, 97.115, 20, 12.61, 16.545, 13.045, 
 [connection signal="pressed" from="menu buttons/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="menu buttons/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="menu buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="GUI/Player_Hand/Area2D" to="GUI/Player_Hand" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GUI/Player_Hand/Area2D" to="GUI/Player_Hand" method="_on_area_2d_mouse_exited"]

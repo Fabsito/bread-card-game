@@ -49,26 +49,10 @@ func _on_area_2d_card_release(left: bool) -> void:
 		hold = false
 		card_being_held = null
 		z_index = 0
-		
-		var drop_zone = get_tree().get_first_node_in_group("drop_zone")
-		
-		if is_on_drop_zone and drop_zone != null:
-			var slot = drop_zone.get_closest_slot(global_position)
-			
-			if slot:
-				if get_parent() != drop_zone:
-					get_parent().remove_child(self)
-					drop_zone.add_child(self)
-				
-				drop_zone.release_slot(self)
-				slot.occupied = true
-				slot.card = self
-				current_slot = slot
-				animate_to_pos(slot.pos) 
-			else:
-				back_to_deck()
-		else:
-			back_to_deck()
+		set_on_drop_zone(Area2D)
+	else:
+		back_to_deck()
+
 
 func back_to_deck():
 	var tween = create_tween()
@@ -101,18 +85,17 @@ func _on_card_hover(card: Node2D,) -> void:
 func set_on_drop_zone(area):
 	var drop_zone = get_tree().get_first_node_in_group("drop_zone")
 	is_on_drop_zone=true
+	printerr("is on drop zone :", is_on_drop_zone)
 	if is_on_drop_zone and drop_zone != null:
-			var slot = drop_zone.get_closest_slot(global_position)
+		var slot = drop_zone.get_closest_slot(global_position)
+	
+		if slot:
+			if get_parent() != drop_zone:
+				get_parent().remove_child(self)
+				drop_zone.add_child(self)
 			
-			if slot:
-				if get_parent() != drop_zone:
-					get_parent().remove_child(self)
-					drop_zone.add_child(self)
-				
-				drop_zone.release_slot(self)
-				slot.occupied = true
-				slot.card = self
-				current_slot = slot
-				animate_to_pos(slot.pos) 
-func _on_h_slider_changed() -> void:
-	pass
+			drop_zone.release_slot(self)
+			slot.occupied = true
+			slot.card = self
+			current_slot = slot
+			animate_to_pos(slot.pos) 

@@ -2,25 +2,20 @@
 
 [ext_resource type="Script" uid="uid://kdq4ihi5rgcc" path="res://scripts/drop_zone.gd" id="1_shdp8"]
 [ext_resource type="Texture2D" uid="uid://bojlx8wbsrls4" path="res://assets/Props/spr_Props.png" id="2_shdp8"]
-[ext_resource type="Material" uid="uid://bgtr5g6ah1glg" path="res://shaders/balatro-fire/balatro-fire.tres" id="2_vv7pd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shdp8"]
-size = Vector2(63, 37)
+size = Vector2(20, 24)
 
 [node name="Drop zone" type="Area2D" unique_id=60187481 groups=["drop_zone"]]
-modulate = Color(0.6632293, 0.40801865, 0.7612807, 1)
 script = ExtResource("1_shdp8")
 
-[node name="CollisionShape2D1" type="CollisionShape2D" parent="." unique_id=1509829089]
-position = Vector2(-0.5, 0.5)
-shape = SubResource("RectangleShape2D_shdp8")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1855552403]
-self_modulate = Color(0.77405685, 0.9383378, 0.9263699, 1)
-material = ExtResource("2_vv7pd")
 texture = ExtResource("2_shdp8")
 region_enabled = true
-region_rect = Rect2(18, 170, 62, 38)
+region_rect = Rect2(183, 185, 20, 23)
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="." unique_id=1509829089]
+shape = SubResource("RectangleShape2D_shdp8")
 
 [node name="Marker2D1" type="Marker2D" parent="." unique_id=1951511801]
 

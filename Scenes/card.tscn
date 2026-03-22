@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dljlltctp61hb"]
 
-[ext_resource type="Texture2D" uid="uid://d3wr1kfuv45oq" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Empty 1.png" id="1_eumee"]
+[ext_resource type="Texture2D" uid="uid://csxnq233e63l7" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Card Back 1.png" id="1_brehn"]
 [ext_resource type="Script" uid="uid://djo263yhvwvg8" path="res://scripts/card.gd" id="2_eumee"]
 [ext_resource type="Script" uid="uid://p1p0s2s7fe56" path="res://scripts/card_click.gd" id="3_e6po8"]
 
@@ -8,9 +8,9 @@
 size = Vector2(40, 66)
 
 [node name="card" type="Sprite2D" unique_id=1918723890]
-texture = ExtResource("1_eumee")
+texture = ExtResource("1_brehn")
 script = ExtResource("2_eumee")
-card_texture = ExtResource("1_eumee")
+card_texture = ExtResource("1_brehn")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1754829217]
 script = ExtResource("3_e6po8")

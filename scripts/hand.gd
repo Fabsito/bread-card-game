@@ -65,8 +65,9 @@ func _handle_reordering(dragging_card, cards):
 		elif mouse_x < other_card.position.x and dragging_card.get_index() > i:
 			move_child(dragging_card, i)
 
-func _on_card_mouse_entered(card):
+func _on_area_2d_mouse_entered(card) -> void:
 	hovered_card = card
 
-func _on_card_mouse_exited(_card):
-	hovered_card = null
+
+func _on_area_2d_mouse_exited(card) -> void:
+	hovered_card = card

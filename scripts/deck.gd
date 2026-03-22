@@ -2,28 +2,41 @@ extends Node2D
 
 @export var cards : Array[Resource]
 @export var cardScene : PackedScene
-@export var hand : Node2D
+@onready var player_hand: Node2D = $"../Player_Hand"
 
-@export var spread_curve : float = 40.0 # Cuánto se separan las cartas
-@export var rotation_curve : float = 25.0 # Inclinación de las cartas (abanico)
+@onready var enemy_hand: Node2D = $"../Enemy_Hand"
+
+@export var spread_curve : float = 20.0 # Cuánto se separan las cartas
+@export var rotation_curve : float = 15.0 # Inclinación de las cartas (abanico)
 
 func draw_card() -> void:
 	if cards.is_empty():
 		print("No cards left!")
 		return
-	var data = cards.pop_back()
-	var card = cardScene.instantiate()
+	if player_hand:
+		var data = cards.pop_back()
+		var card = cardScene.instantiate()
 	
-	card.value = data.value
-	card.suit = data.suit
-	card.card_texture = data.card_texture
-	card.global_position = get_global_mouse_position() 
-	hand.add_child(card)
+		card.value = data.value
+		card.suit = data.suit
+		card.card_texture = data.card_texture
+		card.global_position = get_global_mouse_position() 
+		player_hand.add_child(card)
+		print("draw card : card = ",card.name)
+	elif enemy_hand:
+		var data = cards.pop_back()
+		var card = cardScene.instantiate()
+	
+		card.value = data.value
+		card.suit = data.suit
+		card.card_texture = data.card_texture
+		card.global_position = get_global_mouse_position() 
+		enemy_hand.add_child(card)
 	
 	reorganize_hand()
 
 func reorganize_hand() -> void:
-	var children = hand.get_children()
+	var children = player_hand.get_children()
 	var count = children.size()
 	
 	for i in range(count):
