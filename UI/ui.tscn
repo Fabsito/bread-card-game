@@ -24,3 +24,17 @@ offset_top = -97.0
 offset_right = 310.0
 grow_vertical = 0
 bbcode_enabled = true
+text = "cards left :"
+
+[node name="Button" type="Button" parent="back_ground" unique_id=441898735]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_right = 64.5
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Delete last card"
+
+[connection signal="pressed" from="back_ground/Button" to="." method="_on_button_pressed"]
