@@ -13,3 +13,5 @@ script = ExtResource("1_bo1nx")
 
 [node name="player_hand" type="Node2D" parent="." unique_id=1114401927]
 script = ExtResource("2_bo1nx")
+
+[connection signal="curret_card" from="player_hand" to="UI" method="_on_player_hand_curret_card"]
