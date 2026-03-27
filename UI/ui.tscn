@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://blt0icv7374fe"]
+
+[ext_resource type="Script" uid="uid://dhoqn4unpl6xf" path="res://UI/ui_script.gd" id="1_2fwl4"]
+[ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_dajm1"]
+[ext_resource type="PackedScene" uid="uid://b5bxd5dw7tphu" path="res://Scenes/player.tscn" id="3_e6gg6"]
+[ext_resource type="PackedScene" uid="uid://ca4veb6tfdygv" path="res://Scenes/health_bar.tscn" id="3_hat8c"]
+[ext_resource type="Theme" uid="uid://b8p60u21ae6jw" path="res://fab/fab_theme.tres" id="4_3sbvi"]
+
+[node name="UI" type="Control" unique_id=1607105730]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fwl4")
+
+[node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_dajm1")]
+layout_mode = 0
+
+[node name="Quit" type="Button" parent="back_ground" unique_id=441898735]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Quit Game"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="back_ground" unique_id=1571179039]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.633
+anchor_right = 0.312
+anchor_bottom = 1.0
+offset_top = -227.88
+offset_right = 0.31999207
+offset_bottom = -228.0
+grow_vertical = 0
+
+[node name="health_bar" parent="back_ground/VBoxContainer" unique_id=1051861323 instance=ExtResource("3_hat8c")]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+theme = ExtResource("4_3sbvi")
+
+[node name="TextEdit" parent="back_ground/VBoxContainer/health_bar" index="1" unique_id=286599720]
+anchor_top = 0.0
+anchor_right = 0.372
+anchor_bottom = 0.0
+offset_left = -73.4
+offset_top = 4.0
+offset_right = 23.59999
+offset_bottom = 27.0
+
+[node name="cards_left" type="RichTextLabel" parent="back_ground/VBoxContainer" unique_id=1142204329]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+bbcode_enabled = true
+text = "cards left :
+"
+
+[node name="energy_left" type="RichTextLabel" parent="back_ground/VBoxContainer" unique_id=521682454]
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+text = "energy left : "
+
+[node name="player" parent="back_ground/VBoxContainer" unique_id=1806426720 instance=ExtResource("3_e6gg6")]
+
+[connection signal="pressed" from="back_ground/Quit" to="." method="_on_button_pressed"]
+
+[editable path="back_ground/VBoxContainer/health_bar"]
+[editable path="back_ground/VBoxContainer/player"]

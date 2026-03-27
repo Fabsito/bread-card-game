@@ -1,15 +1,20 @@
 [gd_scene format=3 uid="uid://crb80spdtkagi"]
 
 [ext_resource type="Script" uid="uid://rxoo4karj3qd" path="res://scripts/card_manager.gd" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://blt0icv7374fe" path="res://UI/ui.tscn" id="1_kry3j"]
 [ext_resource type="Script" uid="uid://bmvy8w2w7iy0h" path="res://scripts/player_hand.gd" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://cpjgdgjq2u1un" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Card Back 3.png" id="3_jjvhh"]
 [ext_resource type="Script" uid="uid://blfjw3moqqkmj" path="res://scripts/deck.gd" id="4_kry3j"]
-[ext_resource type="PackedScene" uid="uid://b5bxd5dw7tphu" path="res://Scenes/player.tscn" id="5_kry3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
 size = Vector2(658, 229.5)
 
 [node name="main" type="Node2D" unique_id=1503049209]
+
+[node name="UI" parent="." unique_id=1607105730 instance=ExtResource("1_kry3j")]
+
+[node name="back_ground" parent="UI" index="0" unique_id=540159911]
+mouse_filter = 1
 
 [node name="card_manager" type="Node2D" parent="." unique_id=1593699787]
 script = ExtResource("1_bo1nx")
@@ -17,19 +22,21 @@ script = ExtResource("1_bo1nx")
 [node name="player_hand" type="Node2D" parent="." unique_id=1114401927]
 script = ExtResource("2_bo1nx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=706456629]
+[node name="Drop Zone" type="Area2D" parent="." unique_id=706456629]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=353037724]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drop Zone" unique_id=353037724]
 position = Vector2(324, 109.25)
 shape = SubResource("RectangleShape2D_bo1nx")
 
 [node name="deck" type="Sprite2D" parent="." unique_id=445293820]
-position = Vector2(45, 302)
+position = Vector2(100, 325)
 texture = ExtResource("3_jjvhh")
 script = ExtResource("4_kry3j")
 
-[node name="player" parent="." unique_id=1806426720 instance=ExtResource("5_kry3j")]
+[connection signal="area_entered" from="Drop Zone" to="card_manager" method="_on_area_2d_area_entered"]
 
-[connection signal="area_entered" from="Area2D" to="card_manager" method="_on_area_2d_area_entered"]
+[editable path="UI"]
+[editable path="UI/back_ground/VBoxContainer/health_bar"]
+[editable path="UI/back_ground/VBoxContainer/player"]

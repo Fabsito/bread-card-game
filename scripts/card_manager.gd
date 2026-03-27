@@ -53,8 +53,7 @@ func highlight_card(card,hovered ):
 	else:
 		card.scale = Vector2(1, 1.0)
 		card.z_index =1
-func _ready() -> void:
-	pass # Replace with function body.
+
 func get_card_on_top(cards):
 	var card_on_top = cards[0].collider.get_parent()
 	for i in cards:

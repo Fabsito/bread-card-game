@@ -1,3 +1,4 @@
 [gd_resource type="Theme" format=3 uid="uid://b8p60u21ae6jw"]
 
 [resource]
+ProgressBar/colors/font_color = Color(0.45618725, 0.6888843, 0.5324015, 1)

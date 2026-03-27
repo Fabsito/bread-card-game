@@ -3,7 +3,7 @@ extends Sprite2D
 const CARD = preload("uid://b0bddfu4w10nu")
 @onready var card_manager: Node2D = $"../card_manager"
 @onready var deck: Sprite2D = $"."
-var player_deck = ["blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","blue","red","red"]
+var player_deck = ["atack","defend","defend","defend","defend","defend"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	deck.position = Vector2(50,get_viewport_rect().size.y - 50)
