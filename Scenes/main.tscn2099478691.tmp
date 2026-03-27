@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://crb80spdtkagi"]
+
+[ext_resource type="Script" uid="uid://rxoo4karj3qd" path="res://scripts/card_manager.gd" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://bmvy8w2w7iy0h" path="res://scripts/player_hand.gd" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://blt0icv7374fe" path="res://UI/ui.tscn" id="3_8gbba"]
+
+[node name="main" type="Node2D" unique_id=1503049209]
+
+[node name="UI" parent="." unique_id=1607105730 instance=ExtResource("3_8gbba")]
+
+[node name="card_manager" type="Node2D" parent="." unique_id=1593699787]
+script = ExtResource("1_bo1nx")
+
+[node name="player_hand" type="Node2D" parent="." unique_id=1114401927]
+script = ExtResource("2_bo1nx")
+
+[connection signal="curret_card" from="player_hand" to="UI" method="_on_player_hand_curret_card"]
