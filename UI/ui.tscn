@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://blt0icv7374fe"]
+
+[ext_resource type="Script" uid="uid://dhoqn4unpl6xf" path="res://UI/ui_script.gd" id="1_2fwl4"]
+[ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_dajm1"]
+
+[node name="UI" type="Control" unique_id=1607105730]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fwl4")
+
+[node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_dajm1")]
+layout_mode = 0
+
+[node name="text" type="RichTextLabel" parent="back_ground" unique_id=1142204329]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -97.0
+offset_right = 310.0
+grow_vertical = 0
+bbcode_enabled = true
+text = "cards left :"
+
+[node name="Button" type="Button" parent="back_ground" unique_id=441898735]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.5
+offset_right = 64.5
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Delete last card"
+
+[connection signal="pressed" from="back_ground/Button" to="." method="_on_button_pressed"]
