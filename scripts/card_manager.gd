@@ -62,8 +62,6 @@ func get_card_on_top(cards):
 		if current_card.z_index > card_on_top.z_index :
 			card_on_top = current_card
 	return card_on_top
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	pass
 func start_drag(card):
 	card_being_dragged = card
 	card.scale = Vector2(1,1)
