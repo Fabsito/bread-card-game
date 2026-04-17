@@ -1,25 +1,28 @@
 [gd_scene format=3 uid="uid://xfln1784k8ns"]
 
 [ext_resource type="Shader" uid="uid://bx1bgyd8xp1a7" path="res://shaders/balatro-background/balatro_background.gdshader" id="1_fggaj"]
+[ext_resource type="Script" uid="uid://bb4p4ckbsqbjr" path="res://shaders/balatro-background/.gd" id="2_xrrre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ya4y2"]
+resource_local_to_scene = true
 shader = ExtResource("1_fggaj")
-shader_parameter/spin_rotation_speed = 2.0
-shader_parameter/move_speed = 7.0
+shader_parameter/spin_rotation_speed = 1.5
+shader_parameter/move_speed = 3.0
 shader_parameter/offset = Vector2(0, 0)
-shader_parameter/colour_1 = Color(0.078431375, 0.11764706, 0.23529412, 1)
-shader_parameter/colour_2 = Color(0.9882353, 0.6392157, 0.06666667, 1)
-shader_parameter/colour_3 = Color(0, 0, 0, 1)
-shader_parameter/contrast = 2.825
-shader_parameter/lighting = 0.43
+shader_parameter/colour_1 = Color(0, 0, 0, 1)
+shader_parameter/colour_2 = Color(0.7137392, 0.20096016, 0.78993213, 1)
+shader_parameter/colour_3 = Color(0.27257842, 0.0009120777, 0.5709861, 1)
+shader_parameter/contrast = 4.0
+shader_parameter/lighting = 0.2
 shader_parameter/spin_amount = 0.41
 shader_parameter/pixel_filter = 740.0
-shader_parameter/is_rotating = false
+shader_parameter/is_rotating = true
 
 [sub_resource type="Theme" id="Theme_yt4s2"]
 
-[node name="ColorRect" type="ColorRect" unique_id=540159911]
+[node name="back_ground" type="ColorRect" unique_id=540159911]
 material = SubResource("ShaderMaterial_ya4y2")
 offset_right = 640.0
 offset_bottom = 360.0
 theme = SubResource("Theme_yt4s2")
+script = ExtResource("2_xrrre")

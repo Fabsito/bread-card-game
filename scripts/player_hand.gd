@@ -17,6 +17,7 @@ func _ready() -> void:
 func animate_card_to_position(card , new_position:Vector2):
 	var tween := get_tree().create_tween()
 	tween.tween_property(card,"global_position",new_position,0.1)
+
 func  add_card_to_hand(card):
 	if card not in player_hand:
 		player_hand.insert(0,card)

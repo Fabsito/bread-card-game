@@ -65,6 +65,7 @@ text = "cards left :
 [node name="energy_left" type="RichTextLabel" parent="back_ground/VBoxContainer" unique_id=521682454]
 custom_minimum_size = Vector2(150, 25)
 layout_mode = 2
+bbcode_enabled = true
 text = "energy left : "
 
 [node name="player" parent="back_ground/VBoxContainer" unique_id=1806426720 instance=ExtResource("3_e6gg6")]

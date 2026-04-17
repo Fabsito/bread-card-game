@@ -40,7 +40,8 @@ func _update_counter_display() -> void:
 
 func _update_energy_display():
 	var energy = player.energy
-	energy_left.text = "energy : "+str(energy)
+	var display_color = _get_color_for_size(energy)
+	energy_left.text = "Energy : [color=#%s]%d[/color]" % [display_color, energy]
 
 func _get_color_for_size(size: int) -> String:
 	if size <= LOW_CARD_THRESHOLD:
