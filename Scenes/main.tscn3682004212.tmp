@@ -7,104 +7,80 @@
 [ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_344ge"]
 [ext_resource type="Script" uid="uid://bmvy8w2w7iy0h" path="res://scripts/player_hand.gd" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://cpjgdgjq2u1un" path="res://assets/Playing Cards Pixelart Asset Pack/Sprites/Card Back 3.png" id="3_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://b5bxd5dw7tphu" path="res://Scenes/player.tscn" id="4_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://dqpfrs7pjjmd7" path="res://enemy/enemy.tscn" id="4_hptm8"]
 [ext_resource type="Script" uid="uid://blfjw3moqqkmj" path="res://scripts/deck.gd" id="4_kry3j"]
 [ext_resource type="Script" uid="uid://5bnrfjpnh21w" path="res://scripts/game_loop.gd" id="9_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://ca4veb6tfdygv" path="res://Scenes/health_bar.tscn" id="12_fdnlq"]
-[ext_resource type="Theme" uid="uid://b8p60u21ae6jw" path="res://fab/fab_theme.tres" id="13_jkdf5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdnlq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_344ge"]
 resource_local_to_scene = true
 shader = ExtResource("2_21xkr")
 shader_parameter/spin_rotation_speed = 1.5
 shader_parameter/move_speed = 3.0
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/colour_1 = Color(0, 0, 0, 1)
-shader_parameter/colour_2 = Color(0.2709, 0.39552832, 0.43, 1)
-shader_parameter/colour_3 = Color(0.1824, 0.39418674, 0.76, 1)
+shader_parameter/colour_2 = Color(0.7137392, 0.20096016, 0.78993213, 1)
+shader_parameter/colour_3 = Color(0.27257842, 0.0009120777, 0.5709861, 1)
 shader_parameter/contrast = 4.0
 shader_parameter/lighting = 0.2
 shader_parameter/spin_amount = 0.41
 shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bo1nx"]
+size = Vector2(582, 227.5)
+
 [node name="main" type="Node2D" unique_id=1503049209]
 script = ExtResource("1_344ge")
 
 [node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_344ge")]
-material = SubResource("ShaderMaterial_fdnlq")
-
-[node name="player" parent="." unique_id=1806426720 groups=["player"] instance=ExtResource("4_d1ilt")]
-visible = false
-
-[node name="enemy" parent="." unique_id=1973668419 groups=["enemy"] instance=ExtResource("4_hptm8")]
-visible = false
-
-[node name="game_loop" type="Node2D" parent="." unique_id=1191427988 groups=["game_loop"]]
-visible = false
-script = ExtResource("9_ynf5e")
+material = SubResource("ShaderMaterial_344ge")
 
 [node name="card_manager" type="Node2D" parent="." unique_id=1593699787]
-visible = false
 script = ExtResource("1_bo1nx")
 
 [node name="player_hand" type="Node2D" parent="." unique_id=1114401927]
-visible = false
 script = ExtResource("2_bo1nx")
 
-[node name="deck" type="Sprite2D" parent="." unique_id=445293820 groups=["deck"]]
-visible = false
+[node name="deck" type="Sprite2D" parent="." unique_id=445293820]
 position = Vector2(100, 325)
 texture = ExtResource("3_jjvhh")
 script = ExtResource("4_kry3j")
 
-[node name="UI" parent="." unique_id=1607105730 groups=["UI"] instance=ExtResource("1_kry3j")]
+[node name="Drop Zone" type="Area2D" parent="." unique_id=706456629]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drop Zone" unique_id=353037724]
+position = Vector2(314, 126.75)
+shape = SubResource("RectangleShape2D_bo1nx")
+
+[node name="UI" parent="." unique_id=1607105730 instance=ExtResource("1_kry3j")]
 
 [node name="Quit" parent="UI" index="0" unique_id=1309093918]
-offset_left = 480.0
-offset_top = 320.0
-offset_right = 609.0
-offset_bottom = 351.0
+anchors_preset = 15
+anchor_left = 0.0
+anchor_bottom = 1.0
+offset_left = 503.0
+offset_top = 321.0
+offset_right = 632.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="change_enemy_scene" parent="UI" index="1" unique_id=1832469684]
-offset_left = 480.0
-offset_top = 285.0
-offset_right = 636.0
-offset_bottom = 316.0
+offset_left = 486.0
+offset_top = 277.0
+offset_right = 642.0
+offset_bottom = 308.0
+text = "escena enemigo
+"
 
-[node name="VBoxContainer" parent="UI" index="2" unique_id=8121063]
-visible = false
-offset_top = 0.0
-offset_right = 150.0
-offset_bottom = 86.0
+[node name="game_loop" type="Node2D" parent="." unique_id=1191427988]
+script = ExtResource("9_ynf5e")
 
-[node name="enemy_health_bar" parent="UI/VBoxContainer" index="1" unique_id=1051861323 instance=ExtResource("12_fdnlq")]
-custom_minimum_size = Vector2(0, 28)
-layout_mode = 2
-theme = ExtResource("13_jkdf5")
-
-[node name="TextEdit" parent="UI/VBoxContainer/enemy_health_bar" index="1" unique_id=286599720]
-anchor_top = 0.0
-anchor_right = 0.372
-anchor_bottom = 0.0
-offset_left = -73.4
-offset_top = 4.0
-offset_right = 23.59999
-offset_bottom = 27.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UI" unique_id=712002457]
-layout_mode = 0
-offset_left = 251.0
-offset_top = 57.0
-offset_right = 348.0
-offset_bottom = 86.0
-bbcode_enabled = true
-text = "[b]Main Menu"
-
+[connection signal="area_entered" from="Drop Zone" to="card_manager" method="_on_area_2d_area_entered"]
 [connection signal="pressed" from="UI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="UI/change_enemy_scene" to="." method="_on_change_enemy_scene_pressed"]
 
 [editable path="UI"]
 [editable path="UI/VBoxContainer/health_bar"]
-[editable path="UI/VBoxContainer/enemy_health_bar"]
+[editable path="UI/VBoxContainer/player"]

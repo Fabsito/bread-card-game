@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dp6ffrbe8ittn"]
+
+[ext_resource type="Script" uid="uid://bshmgawat2sht" path="res://scripts/card_data.gd" id="1_buw1k"]
+
+[resource]
+script = ExtResource("1_buw1k")
+card_name = "Poison"
+description = "veneno"
+value = 3
+special_effect = 1
+metadata/_custom_type_script = "uid://bshmgawat2sht"

@@ -29,6 +29,10 @@ window/size/window_height_override=620
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
+[global_group]
+
+ui="User Interface"
+
 [input]
 
 clickL={

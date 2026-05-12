@@ -8,19 +8,32 @@ const COLOR_FULL = "45ff45"   # Green
 const COLOR_NORMAL = "ffffff" # White
 # --- Node References ---
 @onready var card_manager = $"../card_manager"
-@onready var cards_left: RichTextLabel = $back_ground/VBoxContainer/cards_left
-@onready var energy_left: RichTextLabel = $back_ground/VBoxContainer/energy_left
-@onready var player: Node2D = $back_ground/VBoxContainer/player
-@onready var health_bar: Control = $back_ground/VBoxContainer/health_bar
-
-
+@onready var player: Node2D = $"../player"
+@onready var game_loop = $"../game_loop"
+@onready var container: Control = $VBoxContainer
+@onready var health_bar: Node = $VBoxContainer/health_bar/ProgressBar
+@onready var health_text: Label = $VBoxContainer/health_bar/TextEdit
+var enemy_health_bar: ProgressBar
+var enemy_health_text: Label
+@onready var cards_left: Node = $VBoxContainer/cards_left
+@onready var energy_left: Node = $VBoxContainer/energy_left
+@onready var enemy
+@onready var end_turn: Button = $end_turn
 # --- Player references --- 
 
 
 
+
 func _ready() -> void:
-	health_bar.initiate_health_bar(player.max_health)
-	health_bar.update_health(player.current_health,player.max_health)
+	enemy = get_tree().get_first_node_in_group("enemy")
+	enemy_health_bar = $VBoxContainer/enemy_health_bar/ProgressBar
+	enemy_health_text = $VBoxContainer/enemy_health_bar/TextEdit
+	
+	health_bar.max_value = player.max_health
+	health_bar.value = player.current_health
+	enemy_health_bar.max_value = enemy.max_health
+	enemy_health_bar.value = enemy.current_health 
+	# resto igual
 	cards_left.pivot_offset = cards_left.size / 2
 	cards_left.bbcode_enabled = true
 	if card_manager:
@@ -56,5 +69,18 @@ func _play_pop_animation() -> void:
 	cards_left.scale = Vector2(0.7, 0.7)
 	tween.tween_property(cards_left, "scale", Vector2(1.0, 1.0), 0.2)
 # --- buttons ---
-func _on_button_pressed() -> void:
+# En el script de tu UI
+
+func update_ui() -> void:
+	health_bar.max_value = player.max_health
+	health_bar.value = player.current_health
+	health_text.text = "%d/%d" % [player.current_health, player.max_health]
+	enemy_health_bar.value = enemy.current_health      # ← agregar
+	enemy_health_text.text = "%d/%d" % [enemy.current_health, enemy.max_health]  # ← agregar
+	_update_energy_display()
+
+func _on_end_turn_pressed() -> void:
+	game_loop.end_player_turn()
+
+func _on_quit_pressed() -> void:
 	get_tree().quit()

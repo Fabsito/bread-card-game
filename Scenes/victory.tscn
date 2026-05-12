@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dxrh3nbb7gauw"]
+
+[ext_resource type="Script" uid="uid://bxvdl6s1ilv82" path="res://scripts/victory.gd" id="1_1fp7o"]
+[ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="2_o3goa"]
+[ext_resource type="Shader" uid="uid://bx1bgyd8xp1a7" path="res://shaders/balatro-background/balatro_background.gdshader" id="3_7yj50"]
+[ext_resource type="Texture2D" uid="uid://2np8v7vuva5m" path="res://assets/thumb-up-female-emoticon-showing-95184191.png" id="4_7yj50"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3goa"]
+resource_local_to_scene = true
+shader = ExtResource("3_7yj50")
+shader_parameter/spin_rotation_speed = 1.5
+shader_parameter/move_speed = 3.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.8980392, 0.7607843, 0.7529412, 1)
+shader_parameter/colour_2 = Color(0.19607843, 0.62352943, 0.35686275, 1)
+shader_parameter/colour_3 = Color(0.047058824, 0.5137255, 0.27450982, 1)
+shader_parameter/contrast = 4.0
+shader_parameter/lighting = 0.2
+shader_parameter/spin_amount = 0.41
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = true
+
+[node name="victory" type="Control" unique_id=817891436]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("1_1fp7o")
+
+[node name="back_ground" parent="." unique_id=540159911 instance=ExtResource("2_o3goa")]
+material = SubResource("ShaderMaterial_o3goa")
+layout_mode = 0
+
+[node name="Button" type="Button" parent="." unique_id=2141785393]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -31.0
+offset_right = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[node name="ThumbUpFemaleEmoticonShowing95184191" type="Sprite2D" parent="." unique_id=1260325572]
+position = Vector2(327.00003, 170.00002)
+scale = Vector2(0.1825, 0.21598415)
+texture = ExtResource("4_7yj50")
+
+[node name="Label" type="Label" parent="." unique_id=990205305]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -92.0
+offset_right = 80.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "VICTORY"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

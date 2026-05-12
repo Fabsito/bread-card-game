@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://nxqrf188juq8"]
+
+[ext_resource type="Script" uid="uid://bshmgawat2sht" path="res://scripts/card_data.gd" id="1_dg6u1"]
+
+[resource]
+script = ExtResource("1_dg6u1")
+card_name = "Atack"
+description = "ataque"
+value = 6
+metadata/_custom_type_script = "uid://bshmgawat2sht"
