@@ -11,13 +11,13 @@ func setup(data: CardData) -> void:
 func _apply_card_color() -> void:
 	match card_data.card_type:
 		CardData.CardType.ATTACK:
-			card_img.modulate = Color(1.0, 0.4, 0.4)  # rojo
+			card_img.modulate = Color(0.971, 0.185, 0.0, 1.0)  # rojo
 		CardData.CardType.DEFEND:
-			card_img.modulate = Color(0.4, 0.6, 1.0)  # azul
+			card_img.modulate = Color(0.517, 0.443, 0.54, 1.0)  # azul
 		CardData.CardType.HEAL:
 			card_img.modulate = Color(0.4, 1.0, 0.4)  # verde
 		CardData.CardType.SPECIAL:
-			card_img.modulate = Color(0.8, 0.4, 1.0)  # morado
+			card_img.modulate = Color(0.88, 0.0, 0.66, 1.0)  # morado
 
 func play() -> void:
 	if card_data == null:

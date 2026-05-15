@@ -60,6 +60,11 @@ texture = ExtResource("3_jjvhh")
 script = ExtResource("4_kry3j")
 
 [node name="UI" parent="." unique_id=1607105730 groups=["UI"] instance=ExtResource("1_kry3j")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Quit" parent="UI" index="0" unique_id=1309093918]
 offset_left = 480.0
@@ -95,10 +100,10 @@ offset_bottom = 27.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI" unique_id=712002457]
 layout_mode = 0
-offset_left = 251.0
-offset_top = 57.0
-offset_right = 348.0
-offset_bottom = 86.0
+offset_left = 273.0
+offset_top = 71.0
+offset_right = 370.0
+offset_bottom = 100.0
 bbcode_enabled = true
 text = "[b]Main Menu"
 

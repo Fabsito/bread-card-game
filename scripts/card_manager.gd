@@ -49,9 +49,7 @@ func _end_drag(card: Node2D) -> void:
 	var slot_found = _raycast_slots()
 	if slot_found:
 		card.play()
-		print("deck encontrado: ", deck)
 		if deck and card.card_data:
-			print("agregando al descarte: ", card.card_data.card_name)
 			deck.add_to_discard(card.card_data)
 		player_hand.remove_card_from_hand(card)
 		card.queue_free()

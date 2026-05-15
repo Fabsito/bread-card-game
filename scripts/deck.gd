@@ -22,7 +22,6 @@ func _ready() -> void:
 	player_deck.shuffle()
 
 func draw_cards(amount: int) -> Array:
-	print("Mazo: %d cartas, Descarte: %d cartas" % [player_deck.size(), discard_pile.size()])
 	if not card_manager:
 		push_error("card_manager es null en deck.gd")
 		return []
@@ -51,7 +50,6 @@ func _reshuffle_discard() -> void:
 	discard_pile.clear()
 	player_deck.shuffle()
 	visible = true
-	print("Mazo rebarajado con %d cartas" % player_deck.size())
 
 ## Llamar cuando una carta se juega o se descarta
 func add_to_discard(card_data: CardData) -> void:

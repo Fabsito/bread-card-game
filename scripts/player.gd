@@ -1,5 +1,7 @@
 extends Node2D
 
+const DAMAGE_NUMBER = preload("res://Scenes/damage_number.tscn")
+
 var max_health: int = 100
 var current_health: int = 100
 var max_energy: int = 3
@@ -16,9 +18,10 @@ func take_damage(amount: int) -> void:
 	var damage = max(0, amount - block)
 	block = max(0, block - amount)
 	current_health = max(0, current_health - damage)
+	current_health = max(0, current_health)
+	_show_damage_number(damage)
 	if current_health <= 0:
 		die()
-
 func add_block(amount: int) -> void:
 	block += amount
 
@@ -44,3 +47,9 @@ func process_poison() -> void:
 
 func die() -> void:
 	print("Game Over")
+
+func _show_damage_number(value: int) -> void:
+	var num = DAMAGE_NUMBER.instantiate()
+	get_parent().add_child(num)
+	num.global_position = Vector2(200, 100)  # ajusta según tu pantalla
+	num.setup(value, Color(0.53, 0.505, 0.472, 1.0))
