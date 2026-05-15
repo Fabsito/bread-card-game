@@ -43,8 +43,9 @@ func end_player_turn() -> void:
 
 func start_enemy_turn() -> void:
 	current_phase = Phase.ENEMY_TURN
+	enemy.block = 0          # ← resetear bloqueo
 	enemy.do_attack(player)
-	ui.update_ui()          # ← actualiza UI tras el ataque
+	ui.update_ui()
 	await get_tree().create_timer(1.0).timeout
 	end_enemy_turn()
 

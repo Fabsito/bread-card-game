@@ -92,6 +92,12 @@ offset_right = 307.0
 offset_bottom = 160.0
 grow_vertical = 1
 
+[node name="TextEdit" parent="UI/VBoxContainer/health_bar" parent_id_path=PackedInt32Array(1607105730, 1051861323) index="1" unique_id=286599720]
+offset_left = -103.044
+offset_top = 0.0
+offset_right = 0.9560013
+offset_bottom = 23.0
+
 [node name="enemy_health_bar" parent="UI/VBoxContainer" index="1" unique_id=1051861323 instance=ExtResource("11_rbh83")]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
@@ -101,10 +107,11 @@ theme = ExtResource("12_h3qwg")
 anchor_top = 0.0
 anchor_right = 0.372
 anchor_bottom = 0.0
-offset_left = -73.4
-offset_top = 4.0
-offset_right = 23.59999
-offset_bottom = 27.0
+offset_left = -103.044
+offset_top = 0.0
+offset_right = 4.9560013
+offset_bottom = 23.0
+text = "Enemy Health"
 
 [node name="end_turn" type="Button" parent="UI" unique_id=1279730554]
 layout_mode = 0

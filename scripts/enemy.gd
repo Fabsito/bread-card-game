@@ -4,11 +4,11 @@ extends Node2D
 
 const DAMAGE_NUMBER = preload("res://Scenes/damage_number.tscn")
 
-var max_health: int = 50
-var current_health: int = 50
+var max_health: int = 100
+var current_health: int = 100
 var block: int = 0
 var min_attack: int = 5
-var max_attack: int = 12
+var max_attack: int = 15
 
 func _ready() -> void:
 	sprite.position = Vector2(320, 100) 
@@ -36,3 +36,6 @@ func _show_damage_number(value: int) -> void:
 	get_parent().add_child(num)
 	num.global_position =  Vector2(320, 100)   # ajusta según tu pantalla
 	num.setup(value, Color(0.576, 0.0, 0.085, 1.0))
+
+func on_turn_start() -> void:
+	block = 0

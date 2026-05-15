@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://8gj4hvnbwhft"]
+
+[ext_resource type="PackedScene" uid="uid://xfln1784k8ns" path="res://shaders/balatro-background/back_ground.tscn" id="1_488pv"]
+[ext_resource type="Script" uid="uid://tgwfhmkdo784" path="res://scripts/lose_screen.gd" id="1_go37l"]
+[ext_resource type="Shader" uid="uid://bx1bgyd8xp1a7" path="res://shaders/balatro-background/balatro_background.gdshader" id="2_go37l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_go37l"]
+resource_local_to_scene = true
+shader = ExtResource("2_go37l")
+shader_parameter/spin_rotation_speed = 1.5
+shader_parameter/move_speed = 3.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0, 0, 0, 1)
+shader_parameter/colour_2 = Color(0.7137392, 0.20096016, 0.78993213, 1)
+shader_parameter/colour_3 = Color(0.27257842, 0.0009120777, 0.5709861, 1)
+shader_parameter/contrast = 4.0
+shader_parameter/lighting = 0.2
+shader_parameter/spin_amount = 0.41
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = true
+
+[node name="Lose Screen" type="Node2D" unique_id=1635248766]
+script = ExtResource("1_go37l")
+
+[node name="Control" type="Control" parent="." unique_id=35303642]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="back_ground" parent="Control" unique_id=540159911 instance=ExtResource("1_488pv")]
+material = SubResource("ShaderMaterial_go37l")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="You Lose" type="Label" parent="Control" unique_id=329765375]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 275.0
+offset_top = 96.0
+offset_right = -290.0
+offset_bottom = -241.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You loose"
+
+[node name="Quit" type="Button" parent="Control" unique_id=978851102]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 202.0
+offset_right = 346.00006
+offset_bottom = 233.0
+text = "Salir"
+
+[node name="Retry" type="Button" parent="Control" unique_id=64023421]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 155.0
+offset_right = 366.0
+offset_bottom = 186.0
+text = "Reintentar"
+
+[connection signal="pressed" from="Control/Quit" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Retry" to="." method="_on_retry_pressed"]
